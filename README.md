@@ -1,8 +1,8 @@
 <!-- MarkdownTOC autolink="true" -->
 
-- [О курсе](#%D0%9E-%D0%BA%D1%83%D1%80%D1%81%D0%B5)
+- [О курсе DEV-1](#%D0%9E-%D0%BA%D1%83%D1%80%D1%81%D0%B5-dev-1)
 	- [Терминология](#%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F)
-	- [Какие навыки будут получены?](#%D0%9A%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BD%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D1%8B)
+	- [Какие навыки будут получены на курсе DEV-1?](#%D0%9A%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BD%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D1%8B-%D0%BD%D0%B0-%D0%BA%D1%83%D1%80%D1%81%D0%B5-dev-1)
 	- [Материалы курса](#%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8B-%D0%BA%D1%83%D1%80%D1%81%D0%B0)
 		- [Скачать материалы курса](#%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C-%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8B-%D0%BA%D1%83%D1%80%D1%81%D0%B0)
 		- [Скачать PostgeSQL](#%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C-postgesql)
@@ -35,17 +35,24 @@
 	- [Создать выполняемый SQL скрипт и запустить его](#%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D1%8F%D0%B5%D0%BC%D1%8B%D0%B9-sql-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82-%D0%B8-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B5%D0%B3%D0%BE)
 		- [Переменные psql](#%D0%9F%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-psql)
 	- [copy](#copy)
+- [Тема 02](#%D0%A2%D0%B5%D0%BC%D0%B0-02)
 
 <!-- /MarkdownTOC -->
 
-# О курсе
+# О курсе DEV-1
 
 ## Терминология
 
 1. Журнал сервера - логи
-2. Журнал предзаписи - вал ? 
+2. Журнал предзаписи (WAL) — это стандартный метод обеспечения целостности данных.
+   Изменения в файлах с данными (где находятся таблицы и индексы) должны записываться только после того, как эти изменения были занесены в журнал
 
-## Какие навыки будут получены?
+   любые изменения, которые не были применены к страницам с данными, могут быть воссозданы из записей журнала. (Это называется восстановлением с воспроизведением, или REDO.)
+
+   [Журнал предзаписи (WAL)](https://postgrespro.ru/docs/postgresql/9.6/wal-intro#:~:text=30.2.-,%D0%96%D1%83%D1%80%D0%BD%D0%B0%D0%BB%20%D0%BF%D1%80%D0%B5%D0%B4%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B8%20(%20WAL%20),%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%86%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.&text=%D0%92%D0%BA%D1%80%D0%B0%D1%82%D1%86%D0%B5%2C%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%B8%D0%B4%D0%B5%D1%8F%20WAL%20%D1%81%D0%BE%D1%81%D1%82%D0%BE%D0%B8%D1%82,%D0%B1%D1%8B%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D1%8B%20%D0%B2%20%D0%B6%D1%83%D1%80%D0%BD%D0%B0%D0%BB%2C%20%D1%82.)
+
+
+## Какие навыки будут получены на курсе DEV-1?
 
 * общие сведения об архитектуре PostgreSQL
 * использование основных объектов БД: таблиц, индексов, представленийпрограммирование на стороне сервера на языках `SQL` и `PL/pgSQL`
@@ -54,6 +61,21 @@
 ##  Материалы курса
 
 ### Скачать материалы курса
+
+**Иконка на рабочем столе XUbuntu**
+
+```text
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=/home/student/get_handouts.sh
+Name=Get DEV1 handounts
+Comment=Handouts will be written to ~/dev1/
+```
+
+Содержимое bash скрипта **/home/student/get_handouts.sh**
 
 ```bash
 wget https://edu.postgrespro.ru/DEV1-handouts-12.zip 
@@ -176,6 +198,7 @@ postgres=# \q
 **Перезапустить:**         | postgres$ `pg_ctlcluster 12 main restart`
 **Обновить конфигурацию:** | postgres$ `pg_ctlcluster 12 main reload`
 
+<a name="log"></a>
 #### Журнал сервера
 
 1. Служебные сообщения сервера
@@ -184,9 +207,11 @@ postgres=# \q
 
 Настройка журнала:
 
-1. Расположение: /var/log/postgresql/postgresql-12-main.log
-2. Формат записей | текстовый | csv
-3. Какие события регестрировать | Unix - syslog | Windows - eventlog
+Что                          | Где
+---                          + ---
+Расположение:                | `/var/log/postgresql/postgresql-12-main.log`, `C:\Apps\PostgresSQL\data\log`
+Формат записей               | текстовый 
+Какие события регестрировать | Unix - syslog , Windows - eventlog
 
 [Логирование](https://postgrespro.ru/docs/postgresql/12/runtime-config-logging)
 
@@ -204,20 +229,21 @@ postgres=# \q
 новую строку в конец файла — она будет иметь приоритет над значением, которое устанавливалось выше в том
 же файле.
 
-Имя файла | Путь к файлу            | Способ изменения файла | Описание
-----------|-------------------------|-----------------------------
-postgresql.conf | /etc/postgresql/12/main/postgresql.conf | Вручную | основной файл параметров 
-postgresql.auto.conf | /var/lib/postgresql/12/main/postgresql.auto.conf | команда ALTER SYSTEM | основной файл параметров (с высшим приоритетом, т.е. Параметры, установленные через команду `ALTER SYSTEM`, имеют приоритет над параметрами в postgresql.conf.
-pg_hba.conf | /var/lib/postgresql/12/main/ | Настройка аутентификация удаленных (не локальных) пользователей
-postgresql-12-main.log | /var/log/postgresql/ | Журнал сервера
+Имя файла              | Путь к файлу            | Способ изменения файла | Описание
+----------             |-------------------------|-----------------------------|------------
+postgresql.conf        | /etc/postgresql/12/main/postgresql.conf                | Вручную              | основной файл параметров 
+postgresql.auto.conf   | /var/lib/postgresql/12/main/postgresql.auto.conf       | команда ALTER SYSTEM | основной файл параметров (с высшим приоритетом, т.е. Параметры, установленные через команду `ALTER SYSTEM`, имеют приоритет над параметрами в postgresql.conf.
+pg_hba.conf            | /var/lib/postgresql/12/main/                           | Вручную              | Настройка аутентификация удаленных (не локальных) пользователей 
+postgresql-12-main.log | `/var/log/postgresql/`, `C:\Apps\PostgresSQL\data\log` | Автоматически        | [Журнал сервера](#log)
 
-Имя 			| Путь в Windows | Описание
-----------------|------------------------------------ 
-postgresql.conf | C:\Apps\PostgresSQL\data 
-postgresql.auto.conf | C:\Apps\PostgresSQL\data
-pg_hba.conf | C:\Apps\PostgresSQL\data
-psqlrc | C:\Apps\PostgresSQL\etc | Файл выполняющийся каждый раз после запуска psql (! Требуется создать вручную)
-psqlrc.sample            | C:\Apps\PostgresSQL\share  | Файл с предварительными настройками psql
+Имя 			     | Путь в Windows | Описание
+----------------     |------------------------------------ 
+postgresql.conf      | C:\Apps\PostgresSQL\data | 
+postgresql.auto.conf | C:\Apps\PostgresSQL\data |
+pg_hba.conf          | C:\Apps\PostgresSQL\data |
+psqlrc               | C:\Apps\PostgresSQL\etc | Файл выполняющийся каждый раз после запуска psql (! Требуется создать вручную)
+psqlrc.sample        | C:\Apps\PostgresSQL\share  | Файл с предварительными настройками psql
+postgresql-12-main.log | C:\Apps\PostgresSQL\data\log | [Журнал сервера](#log)
 
 
 ### Найстройка файла инициализации psql
@@ -520,8 +546,18 @@ output: :TEST
 ## copy
 
 Сохраняю содержимое таблицы в файл customers.dump:
-db1# \copy customers to 'customers.dump'
-Загружаю содержимое файла в другую таблицу:
-db2# \copy temp_customers from 'customers.dump'
-P.s. Важно, чтобы таблицы, которые участвуют в переносе, имели одинаковую структуру
 
+db1# `\copy customers to 'customers.dump'`
+
+Загружаю содержимое файла в другую таблицу:
+
+
+db2# `\copy temp_customers from 'customers.dump'`
+
+> Важно, чтобы таблицы, которые участвуют в переносе, имели одинаковую структуру
+
+# Тема 02 
+
+[«Общее устройство PostgreSQL». Учебный курс DEV1 в Твери 2018](https://www.youtube.com/watch?v=CLs-QgKKoqQ&list=PLaFqU3KCWw6LNR1IZ814whJe89J1tRQ3t&index=3&ab_channel=PostgresProfessional)
+
+![Архитектура Клиент-Сервер](./images/character_01_Клиент_Сервер.svg)
