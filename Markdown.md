@@ -14,6 +14,7 @@
 		- [Для чего](#%D0%94%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-2)
 		- [Как использовать](#%D0%9A%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-2)
 		- [Как скачать и установить](#%D0%9A%D0%B0%D0%BA-%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C-%D0%B8-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-2)
+	- [Markdown в Discord](#markdown-%D0%B2-discord)
 	- [Markdown шпаргалки](#markdown-%D1%88%D0%BF%D0%B0%D1%80%D0%B3%D0%B0%D0%BB%D0%BA%D0%B8)
 
 <!-- /MarkdownTOC -->
@@ -86,6 +87,9 @@ Markdown Here в первую очередь ориентирован на ра�
 
 [Подробное описание](https://packagecontrol.io/packages/MarkdownTOC#markdown-table-of-contents-generators)
 
+## Markdown в Discord
+
+[Markdown в Discord](https://support.discord.com/hc/ru/sections/115000458672-%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B9-%D1%87%D0%B0%D1%82)
 
 ## Markdown шпаргалки
 
