@@ -1,0 +1,1076 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+  font-family: octicons-anchor;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    color:#333;
+    background:#fff;
+}
+
+body .markdown-body {
+    padding: 45px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+
+pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body input {
+  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body .octicon {
+  font: normal normal normal 16px/1 octicons-anchor;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h1 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h3 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h5 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body h6 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .pl-c {
+  color: #969896;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #795da3;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #333;
+}
+
+.markdown-body .pl-ent {
+  color: #63a35c;
+}
+
+.markdown-body .pl-k {
+  color: #a71d5d;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #183691;
+}
+
+.markdown-body .pl-v {
+  color: #ed6a43;
+}
+
+.markdown-body .pl-id {
+  color: #b52a1d;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.markdown-body .pl-ml {
+  color: #693a17;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mq {
+  color: #008080;
+}
+
+.markdown-body .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.markdown-body .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mo {
+  color: #1d3e81;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .plan-price-unit {
+  color: #767676;
+  font-weight: normal;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .plan-choice {
+  padding: 15px;
+  padding-left: 40px;
+  display: block;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.markdown-body .plan-choice.open {
+  background-color: #fff;
+}
+
+.markdown-body .plan-choice.open .plan-choice-seat-breakdown {
+  display: block;
+}
+
+.markdown-body .plan-choice-free {
+  border-radius: 3px 3px 0 0;
+}
+
+.markdown-body .plan-choice-paid {
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body .plan-choice-radio {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+}
+
+.markdown-body .plan-choice-exp {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.markdown-body .plan-choice-seat-breakdown {
+  margin-top: 10px;
+  display: none;
+}
+
+.markdown-body :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+@media print {
+  body .markdown-body {
+    padding: 0;
+    border: none;
+  }
+}
+</style><title>Шпаргалка по Markdown</title></head><body><article class="markdown-body"><h2>
+<a id="user-content-шпаргалка-по-markdown" class="anchor" href="#%D1%88%D0%BF%D0%B0%D1%80%D0%B3%D0%B0%D0%BB%D0%BA%D0%B0-%D0%BF%D0%BE-markdown" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Шпаргалка по Markdown</h2>
+<p>(перевод, <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">оригинал</a>)</p>
+<p>Поиграть с разметкой Markdown можно на <a href="http://www.markdown-here.com/livedemo.html" rel="nofollow">демо-странице</a>.</p>
+<h5>
+<a id="user-content-содержание" class="anchor" href="#%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Содержание</h5>
+<p><a href="#headers">Заголовки</a><br>
+<a href="#emphasis">Выделение</a><br>
+<a href="#lists">Списки</a><br>
+<a href="#links">Ссылки</a><br>
+<a href="#images">Изображения</a><br>
+<a href="#code">Подсветка кода и синтаксиса</a><br>
+<a href="#tables">Таблицы</a><br>
+<a href="#blockquotes">Цитаты</a><br>
+<a href="#html">Встроенный HTML</a><br>
+<a href="#hr">Горизонтальная линия</a><br>
+<a href="#lines">Новая строка</a><br>
+<a href="#videos">Видео Youtube</a></p>
+<p><a name="user-content-headers"><h2>
+<a id="user-content-заголовки" class="anchor" href="#%D0%B7%D0%B0%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%B8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Заголовки</h2></a></p>
+<pre lang="no-highlight"><code># H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
+Кроме того, H1 и H2 можно обозначить подчеркиванием:
+
+Alt-H1
+======
+
+Alt-H2
+------
+</code></pre>
+<h1>
+<a id="user-content-h1" class="anchor" href="#h1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>H1</h1>
+<h2>
+<a id="user-content-h2" class="anchor" href="#h2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>H2</h2>
+<h3>
+<a id="user-content-h3" class="anchor" href="#h3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>H3</h3>
+<h4>
+<a id="user-content-h4" class="anchor" href="#h4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>H4</h4>
+<h5>
+<a id="user-content-h5" class="anchor" href="#h5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>H5</h5>
+<h6>
+<a id="user-content-h6" class="anchor" href="#h6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>H6</h6>
+<p>Кроме того, заголовки H1 и H2 можно обозначить подчеркиванием:</p>
+<h1>
+<a id="user-content-alt-h1" class="anchor" href="#alt-h1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alt-H1</h1>
+<h2>
+<a id="user-content-alt-h2" class="anchor" href="#alt-h2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alt-H2</h2>
+<p><a name="user-content-emphasis"><h2>
+<a id="user-content-выделение" class="anchor" href="#%D0%B2%D1%8B%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Выделение</h2></a></p>
+<pre lang="no-highlight"><code>Курсив обозначается *звездочками* или _подчеркиванием_.
+
+Полужирный шрифт - двойными **звездочками** или __подчеркиванием__.
+
+Комбинированное выделение **звездочками и _подчеркиванием_**.
+
+Для зачеркнутого текста используются две тильды . ~~Уберите это.~~
+</code></pre>
+<p>Курсив обозначается <em>звездочками</em> или <em>подчеркиванием</em>.</p>
+<p>Полужирный шрифт - двойными <strong>звездочками</strong> или <strong>подчеркиванием</strong>.</p>
+<p>Комбинированное выделение <strong>звездочками и <em>подчеркиванием</em></strong>.</p>
+<p>Для зачеркнутого текста используются две тильды . <del>Уберите это.</del></p>
+<p><a name="user-content-lists"><h2>
+<a id="user-content-списки" class="anchor" href="#%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Списки</h2></a></p>
+<p>(В данном примере предшествующие и завершающие пробелы обозначены точками: ⋅)</p>
+<pre lang="no-highlight"><code>1. Первый пункт нумерованного списка
+2. Второй пункт
+⋅⋅*Ненумерованный вложенный список.
+1. Сами числа не имеют значения, лишь бы это были цифры
+⋅⋅1. Нумерованный вложенный список
+4. И еще один пункт.
+
+⋅⋅⋅Внутри пунктов списка можно вставить абзацы с таким же отступом. Обратите внимание на пустую строку выше и на пробелы в начале (нужен по меньшей мере один, но здесь мы добавили три, чтобы также выровнять необработанный Markdown).
+
+⋅⋅⋅Чтобы вставить разрыв строки, но не начинать новый параграф, нужно добавить два пробела перед новой строкой.⋅⋅
+⋅⋅⋅Этот текст начинается с новой строки, но находится в том же абзаце.⋅⋅
+⋅⋅⋅(В некоторых обработчиках, например на Github, пробелы в начале новой строки не нужны.)
+
+* Ненумерованный список можно размечать звездочками
+- Или минусами
++ Или плюсами
+</code></pre>
+<ol>
+<li>Первый пункт нумерованного списка</li>
+<li>Второй пункт</li>
+</ol>
+<ul>
+<li>Ненумерованный вложенный список.</li>
+</ul>
+<ol>
+<li>
+<p>Сами числа не имеют значения, лишь бы это были цифры</p>
+</li>
+<li>
+<p>Нумерованный вложенный список</p>
+</li>
+<li>
+<p>И еще один пункт.</p>
+<p>Внутри пунктов списка можно вставить абзацы с таким же отступом. Обратите внимание на пустую строку выше и на пробелы в начале (нужен по меньшей мере один, но здесь мы добавили три, чтобы также выровнять необработанный Markdown).</p>
+<p>Чтобы вставить разрыв строки, но не начинать новый параграф, нужно добавить два пробела перед новой строкой.
+Эта текст начинается с новой строки, но находится в том же абзаце.
+(В некоторых обработчиках, например на Github, пробелы в начале новой строки не нужны.)</p>
+</li>
+</ol>
+<ul>
+<li>Ненумерованный список можно размечать звездочками</li>
+</ul>
+<ul>
+<li>Или минусами</li>
+</ul>
+<ul>
+<li>Или плюсами</li>
+</ul>
+<p><a name="user-content-links"><h2>
+<a id="user-content-ссылки" class="anchor" href="#%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ссылки</h2></a></p>
+<p>Ссылки можно оформить разными способами.</p>
+<pre lang="no-highlight"><code>[Обычная ссылка в строке](https://www.google.com)
+
+[Обычная ссылка с title](https://www.google.com "Сайт Google")
+
+[Ссылка со сноской][Произвольный регистронезависимый текст]
+
+[Относительная ссылка на документ](../blob/master/LICENSE)
+
+[Для ссылок со сноской можно использовать цифры][1]
+
+Или можно просто вставить ссылку в квадратные скобки [текст ссылки]
+
+Произвольный текст, после которого можно привести ссылки.
+
+[произвольный регистронезависимый текст]: https://www.mozilla.org
+[1]: http://slashdot.org
+[текст ссылки]: http://www.reddit.com
+</code></pre>
+<p><a href="https://www.google.com" rel="nofollow">Обычная ссылка в строке</a></p>
+<p><a href="https://www.google.com" title="Сайт Google" rel="nofollow">Обычная ссылка с title</a></p>
+<p><a href="https://www.mozilla.org" rel="nofollow">Ссылка со сноской</a> *</p>
+<p><a href="/C:/Projects/blob/master/LICENSE">Относительная ссылка на документ</a></p>
+<p><a href="http://slashdot.org" rel="nofollow">Для ссылок со сноской можно использовать цифры</a></p>
+<p>Или можно просто вставить ссылку в квадратные скобки <a href="http://www.reddit.com" rel="nofollow">текст ссылки</a></p>
+<p>Произвольный текст, после которого можно привести ссылки.</p>
+<p>(*) Для символов не входящих в ASCII, например кириллицы, текст сноски все-таки регистрозависим (прим. перев.)</p>
+<p><a name="user-content-images"><h2>
+<a id="user-content-изображения" class="anchor" href="#%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Изображения</h2></a></p>
+<pre lang="no-highlight"><code>Вот наш логотип (наведите указатель, чтобы увидеть текст заголовка):
+
+Внутри строки:  
+![alt-текст](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Текст заголовка логотипа 1")
+
+В сноске:  
+![alt-текст][logo]
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Текст заголовка логотипа 2"
+</code></pre>
+<p>Вот наш логотип (наведите указатель, чтобы увидеть текст заголовка):</p>
+<p>Внутри строки:<br>
+<a href="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" target="_blank" rel="noopener noreferrer"><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="alt-текст" title="Текст заголовка логотипа 1" style="max-width:100%;"></a></p>
+<p>В сноске:<br>
+<a href="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" target="_blank" rel="noopener noreferrer"><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="alt-текст" title="Текст заголовка логотипа 2" style="max-width:100%;"></a></p>
+<p><a name="user-content-code"><h2>
+<a id="user-content-код-и-подсветка-синтаксиса" class="anchor" href="#%D0%BA%D0%BE%D0%B4-%D0%B8-%D0%BF%D0%BE%D0%B4%D1%81%D0%B2%D0%B5%D1%82%D0%BA%D0%B0-%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81%D0%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Код и подсветка синтаксиса</h2></a></p>
+<p>Блоки кода являются частью функций Markdown, но не подсветка синтаксиса. Однако многие обработчики, например Github или <em>Markdown Here</em>, поддерживают подсветку синтаксиса. Список поддерживаемых языков и способ их указания может различаться. <em>Markdown Here</em> поддерживает десятки языков (и не-языков, например синтаксис diff и заголовки HTTP); полный список и способ указания языков см. на странице <a href="http://softwaremaniacs.org/media/soft/highlight/test.html" rel="nofollow">highlight.js demo-странице</a>.</p>
+<pre lang="no-highlight"><code>`Код` в строке обрамляется `обратными апострофами`.
+</code></pre>
+<p><code>Код</code> в строке обрамляется <code>обратными апострофами</code>.</p>
+<p>Блоки кода выделяются либо тремя обратными апострофами <code>```</code> либо четырьмя пробелами в каждой строке. Рекомендуется использовать три апострофа -- они проще и только они поддерживают подсветку синтаксиса.</p>
+<pre lang="no-highlight"><code>```javascript
+var s = "Подсветка JavaScript";
+alert(s);
+```
+ 
+```python
+s = "Подсветка Python"
+print s
+```
+ 
+```
+Язык не указан, синтаксис не подсвечен.
+Но мы вставим в него &lt;b&gt;тег&lt;/b&gt;.
+```
+</code></pre>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-s1">s</span> <span class="pl-c1">=</span> <span class="pl-s">"Подсветка JavaScript"</span><span class="pl-kos">;</span>
+<span class="pl-en">alert</span><span class="pl-kos">(</span><span class="pl-s1">s</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-s1">s</span> <span class="pl-c1">=</span> <span class="pl-s">"Подсветка Python"</span>
+<span class="pl-k">print</span> <span class="pl-s1">s</span></pre></div>
+<pre><code>Язык не указан, синтаксис не подсвечен (некоторые обработчики все же подсвечивают).
+Но мы вставим в него &lt;b&gt;тег&lt;/b&gt;.
+</code></pre>
+<p><a name="user-content-tables"><h2>
+<a id="user-content-таблицы" class="anchor" href="#%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Таблицы</h2></a></p>
+<p>Таблицы не являются частью Markdown, но многие обработчики, например <em>Markdown Here</em> и Github, поддерживают их. Они позволяют легко добавить таблицы в электронное письмо -- в других случаях для этого нужно копировать их из другого приложения.</p>
+<pre lang="no-highlight"><code>Вертикальные линии обозначают столбцы.
+
+| Таблицы       | Это                | Круто |
+| ------------- |:------------------:| -----:|
+| столбец 3     | выровнен вправо    | $1600 |
+| столбец 2     | выровнен по центру |   $12 |
+| зебра-строки  | прикольные         |    $1 |
+
+Внешние вертикальные линии (|) не обязательны и нужны только, чтобы сам код Markdown выглядел красиво. Тот же код можно записать так:
+
+Markdown | не такой | красивый
+--- | --- | ---
+*Но выводится* | `так же` | **клево**
+1 | 2 | 3
+</code></pre>
+<p>Вертикальные линии обозначают столбцы.</p>
+<table>
+<thead>
+<tr>
+<th>Таблицы</th>
+<th align="center">Это</th>
+<th align="right">Круто</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>столбец 3</td>
+<td align="center">выровнен вправо</td>
+<td align="right">$1600</td>
+</tr>
+<tr>
+<td>столбец 2</td>
+<td align="center">выровнен по центру</td>
+<td align="right">$12</td>
+</tr>
+<tr>
+<td>зебра-строки</td>
+<td align="center">прикольные</td>
+<td align="right">$1</td>
+</tr>
+</tbody>
+</table>
+<p>Внешние вертикальные линии (|) не обязательны и нужны только, чтобы сам код Markdown выглядел красиво. Тот же код можно записать так:</p>
+<table>
+<thead>
+<tr>
+<th>Markdown</th>
+<th>не такой</th>
+<th>красивый</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Но выводится</em></td>
+<td><code>так же</code></td>
+<td><strong>клево</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><a name="user-content-blockquotes"><h2>
+<a id="user-content-цитаты" class="anchor" href="#%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Цитаты</h2></a></p>
+<pre lang="no-highlight"><code>&gt; С помощью цитат очень удобно в письме обозначать исходный текст.
+&gt; Эта строка - часть той же цитаты.
+
+Разрыв цитаты.
+
+&gt; Это очень длинная строка, но она будет правильно процитирована даже при размещении на нескольких строках. Продолжаем писать, чтобы эта строка не вмещалась на одной строке в любом окне. Кстати, в цитаты можно *вставлять* даже **Markdown**.
+</code></pre>
+<blockquote>
+<p>С помощью цитат очень удобно в письме обозначать исходный текст.
+Эта строка - часть той же цитаты.</p>
+</blockquote>
+<p>Разрыв цитаты.</p>
+<blockquote>
+<p>Это очень длинная строка, но она будет правильно процитирована даже при размещении на нескольких строках. Продолжаем писать, чтобы эта строка не вмещалась на одной строке в любом окне. Кстати, в цитаты можно также <em>размечать</em> с помощью <strong>Markdown</strong>.</p>
+</blockquote>
+<p><a name="user-content-html"><h2>
+<a id="user-content-встроенный-html" class="anchor" href="#%D0%B2%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-html" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Встроенный HTML</h2></a></p>
+<p>Часто Markdown понимает чистый HTML.</p>
+<pre lang="no-highlight"><code>&lt;dl&gt;
+  &lt;dt&gt;Список определений&lt;/dt&gt;
+  &lt;dd&gt;Это то, что люди иногда используют.&lt;/dd&gt;
+
+  &lt;dt&gt;Markdown внутри HTML&lt;/dt&gt;
+  &lt;dd&gt;Работает *не очень** хорошо. Используйте HTML-&lt;em&gt;теги&lt;/em&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+<dl>
+  <dt>Список определений</dt>
+  <dd>Это то, что люди иногда используют.</dd>
+  <dt>Markdown внутри HTML</dt>
+  <dd>Работает *не очень** хорошо. Используйте HTML-<em>теги</em>.</dd>
+</dl>
+<p><a name="user-content-hr"><h2>
+<a id="user-content-горизонтальные-линии" class="anchor" href="#%D0%B3%D0%BE%D1%80%D0%B8%D0%B7%D0%BE%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%BB%D0%B8%D0%BD%D0%B8%D0%B8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Горизонтальные линии</h2></a></p>
+<pre><code>Три и более...
+
+---
+
+Дефисы
+
+***
+
+Звездочки
+
+___
+
+Подчеркивания
+</code></pre>
+<p>Три и более...</p>
+<hr>
+<p>Дефисы</p>
+<hr>
+<p>Звездочки</p>
+<hr>
+<p>Подчеркивания</p>
+<p><a name="user-content-lines"><h2>
+<a id="user-content-новая-строка" class="anchor" href="#%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Новая строка</h2></a></p>
+<p>Для понимания работы разрыва строка автор главным образом рекомендует экспериментировать и пробовать -- нажмите &lt;Enter&gt; один раз (т.е. перейдите на новую строку), потом нажмите дважды (т.е. вставьте две новые строки) и посмотрите что приозошло. Вы сразу поймете что вам нужно. В расширении <a href="https://github.com/adam-p/markdown-here">Markdown Here</a> для браузеров есть удобная функция "Markdown Toggle", которая поможет в этом.</p>
+<p><em>Примечание переводчика:</em><br>
+<em>Для переноса на новую строку в конце предыдущей строки необходимо добавить</em> <strong>два пробела</strong>. <em>Без этого большинство парсеров Markdown не выполняют переход на новую строку.</em></p>
+<p>Попробуйте ввести следующее:</p>
+<pre><code>Это начальная строка
+
+Эта строка отделена от предыдущей двумя новыми строками и станет *отдельным абзацем*.
+
+Это тоже отдельный абзац, но...⋅⋅
+Эта строка отделена одной новой строкой, поэтому она находится в *том же абзаце*.
+</code></pre>
+<p>Это начальная строка</p>
+<p>Эта строка отделена от предыдущей двумя новыми строками и станет <em>отдельным абзацем</em>.</p>
+<p>Это тоже отдельный абзац, но...<code>[здесь два пробела]</code><br>
+Эта строка отделена одной новой строкой, поэтому она находится в <em>том же абзаце</em>.</p>
+<p>(Примечание: В <a href="https://github.com/adam-p/markdown-here">Markdown Here</a> разрывы строк ведут себя так же, как в <a href="https://help.github.com/articles/github-flavored-markdown">GFM</a>, поэтому не нужно вставлять по две новые строки.)</p>
+<p><a name="user-content-videos"><h2>
+<a id="user-content-видео-youtube" class="anchor" href="#%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE-youtube" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Видео Youtube</h2></a></p>
+<p>Ролики нельзя вставить напрямую, но можно вставить изображение со ссылкой на видео, например:</p>
+<pre lang="no-highlight"><code>&lt;a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=ID_ВИДЕОРОЛИКА_НА_YOUTUBE" target="_blank"&gt;&lt;img src="http://img.youtube.com/vi/ID_ВИДЕОРОЛИКА_НА_YOUTUBE/0.jpg" 
+alt="ALT-ТЕКСТ ИЗОБРАЖЕНИЯ" width="240" height="180" border="10" /&gt;&lt;/a&gt;
+</code></pre>
+<p>На чистом Markdown, но без размеров изображения и рамки:</p>
+<pre lang="no-highlight"><code>[![ALT-ТЕКСТ ИЗОБРАЖЕНИЯ](http://img.youtube.com/vi/ID_ВИДЕОРОЛИКА_НА_YOUTUBE/0.jpg)](http://www.youtube.com/watch?v=ID_ВИДЕОРОЛИКА_НА_YOUTUBE)
+</code></pre>
+</article></body></html>
