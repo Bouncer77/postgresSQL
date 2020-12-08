@@ -1,3 +1,37 @@
+<!-- MarkdownTOC autolink="true" -->
+
+- [plpgSQL Тема 11](#plpgsql-%D0%A2%D0%B5%D0%BC%D0%B0-11)
+	- [Зачем](#%D0%97%D0%B0%D1%87%D0%B5%D0%BC)
+	- [Структура блока](#%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0-%D0%B1%D0%BB%D0%BE%D0%BA%D0%B0)
+	- [Создание функции на PL/pgSQL](#%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-plpgsql)
+	- [Ананимные блоки](#%D0%90%D0%BD%D0%B0%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B5-%D0%B1%D0%BB%D0%BE%D0%BA%D0%B8)
+	- [Условные операторы](#%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B)
+		- [IF](#if)
+		- [CASE](#case)
+		- [FOR](#for)
+		- [WHILE](#while)
+		- [Безусловный цикл](#%D0%91%D0%B5%D0%B7%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB)
+	- [psql](#psql)
+- [Тема 12](#%D0%A2%D0%B5%D0%BC%D0%B0-12)
+	- [Одна строка результата](#%D0%9E%D0%B4%D0%BD%D0%B0-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B0-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B0)
+	- [Сбор статистики](#%D0%A1%D0%B1%D0%BE%D1%80-%D1%81%D1%82%D0%B0%D1%82%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B8)
+		- [Сколько строчек было затронуто?](#%D0%A1%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D1%81%D1%82%D1%80%D0%BE%D1%87%D0%B5%D0%BA-%D0%B1%D1%8B%D0%BB%D0%BE-%D0%B7%D0%B0%D1%82%D1%80%D0%BE%D0%BD%D1%83%D1%82%D0%BE)
+		- [Табличные функции](#%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8)
+			- [Строки запроса](#%D0%A1%D1%82%D1%80%D0%BE%D0%BA%D0%B8-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0)
+			- [Одна строка](#%D0%9E%D0%B4%D0%BD%D0%B0-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B0)
+- [Подход к устранению неоднозначностей](#%D0%9F%D0%BE%D0%B4%D1%85%D0%BE%D0%B4-%D0%BA-%D1%83%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D1%8E-%D0%BD%D0%B5%D0%BE%D0%B4%D0%BD%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%B5%D0%B9)
+	- [Венгерская нотация](#%D0%92%D0%B5%D0%BD%D0%B3%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F)
+	- [Использование квалификаторов имен](#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80%D0%BE%D0%B2-%D0%B8%D0%BC%D0%B5%D0%BD)
+	- [UPDATE, DELETE, INSERT, которые возвращаю значения](#update-delete-insert-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5-%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D1%8E-%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F)
+		- [Табличные функции](#%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8-1)
+- [Тема 13 Курсоры](#%D0%A2%D0%B5%D0%BC%D0%B0-13-%D0%9A%D1%83%D1%80%D1%81%D0%BE%D1%80%D1%8B)
+	- [Чтение в циклах](#%D0%A7%D1%82%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-%D1%86%D0%B8%D0%BA%D0%BB%D0%B0%D1%85)
+	- [Обновление или удаление текущей строки](#%D0%9E%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8%D0%BB%D0%B8-%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B5%D0%B9-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8)
+	- [Открытие курсора и передача его клиенту](#%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5-%D0%BA%D1%83%D1%80%D1%81%D0%BE%D1%80%D0%B0-%D0%B8-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0-%D0%B5%D0%B3%D0%BE-%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82%D1%83)
+
+<!-- /MarkdownTOC -->
+
+
 # plpgSQL Тема 11
 
 + Доступен по умолчанию
@@ -546,5 +580,246 @@ $$ STABLE LANGUAGE plpgsql; -- STABLE
 SELECT * FROM days_of_week() WITH ORDINALITY;
 ```
 
-# Тема 13
+# Тема 13 Курсоры
+
+1. Несвязанные с запросом курсорные переменные `refcursor`
+
+2. Связанные с запросом курсорные переменные
+
+С курсорами в pg/plSQL только построчная выборка
+
+> Выборка
+> 
+> FETCH INTO цель
+
+> Обновление или удаление текущей строки
+> 
+> WHERE CURENT OF
+
+Закрытие курсора:
+
+1. Заканчивается транзакция
+
+2. Вызов CLOSE
+
+
+```sql
+-- Работа с курсором в цикле
+--- размер выборки 1 строка
+OPEN курсорная_переменная FOR запрос;
+LOOP
+	FETCH курсорная_переменная INTO цель;
+	EXIT WHEN NOT FOUND;
+	тело_цикла
+END LOOP;
+CLOSE курсорная_переменная;
+
+-- Сокращенный вариант
+--- автоматически переменная курсора, авто закрытие курсора, размер выборки 10 строчек
+FOR запись IN курсорная_переменная LOOP
+	тело_цикла
+END LOOP;	
+```
+
+```sql
+INSERT INTO t VALUES (3, 'Три');
+
+-- Вариант 1
+DO $$
+DECLARE
+	-- объявление курсорной переменной 
+	cur refcursor;
+BEGIN	
+	-- связывание с запросом и открытие курсора
+	OPEN cur FOR SELECT * FROM t;
+END;
+$$;
+
+-- Вариант 2
+DO $$
+DECLARE
+	-- объявление и связывание с запросом переменной
+	cur CURSOR FOR SELECT * FROM t; -- тип refcursor
+BEGIN	
+	-- открытие курсора
+	OPEN cur;
+END;
+$$;
+
+-- С параметрами
+DO $$
+DECLARE
+	-- объявление и связывание с запросом переменной
+	cur CURSOR(id integer) FOR SELECT * FROM t WHERE t.id = cur.id;
+BEGIN	
+	-- открытие курсора
+	OPEN cur(1);
+END;
+$$;
+
+DO $$
+<<local>>
+DECLARE
+	id integer := 3;
+	-- объявление и связывание переменной
+	cur CURSOR FOR SELECT * FROM t WHERE t.id = local.id;
+BEGIN
+	id := 1;
+	-- открытие курсора (значение id берется на этот момент)
+	OPEN cur; -- id = 1
+END;
+$$;
+
+-- Чтение данных из курсора
+DO $$
+DECLARE
+	cur refcursor;
+	rec record;
+BEGIN
+	OPEN cur FOR SELECT * FROM t ORDER BY id;
+	MOVE cur; -- пропустить одну запись
+	FETCH cur INTO rec; -- прочитать запись
+	RAISE NOTICE '%', rec;
+	CLOSE cur;
+END;
+$$;
+```
+
+## Чтение в циклах
+
+```sql
+-- !ВАЖНО Чтение данных в цикле
+DO $$
+DECLARE
+	cur refcursor;
+	rec record;
+BEGIN
+	OPEN cur FOR SELECT * FROM t;
+	LOOP
+		FETCH cur INTO rec;
+		EXIT WHEN NOT FOUND;
+		RAISE NOTICE '%', rec;
+	END LOOP;
+	CLOSE cur;
+END;
+$$;
+
+DO $$
+DECLARE
+	cur CURSOR FOR SELECT * FROM t;
+BEGIN
+	FOR rec IN cur LOOP -- cur должна быть связана с запросом
+		RAISE NOTICE '%', rec;
+	END LOOP;
+END;
+$$;
+
+-- Выборка по 10 строк, если не требуется работать с курсорной переменной вне цикла
+DO $$
+DECLARE
+	rec record; -- надо объявить явно
+BEGIN
+	FOR rec IN (SELECT * FROM t) LOOP 
+		RAISE NOTICE '%', rec;
+	END LOOP;
+END;
+$$;
+
+DO $$
+DECLARE
+	rec_outer record;
+	rec_inner record;
+BEGIN
+	<<OUTER>>
+	FOR rec_outer IN (SELECT * FROM t ORDER BY id) LOOP 
+		<<INNER>>
+		FOR rec_inner IN (SELECT * FROM t ORDER BY id) LOOP
+			EXIT OUTER WHEN rec_inner.id = 3; -- 1,1 : 1,2
+			-- CONTINUE OUTER WHEN rec_inner.id = 3; -- 1,1 : 1,2 : 2,1 : 2,2 : 3,1 : 3,2
+			RAISE NOTICE '%, %', rec_outer, rec_inner;
+		END LOOP;
+	END LOOP;
+END;
+$$;
+
+DO $$
+DECLARE
+	rec record;
+BEGIN
+	FOR rec IN (SELECT * FROM t WHERE false) LOOP
+		RAISE NOTICE '%', rec;
+	END LOOP;
+	RAISE NOTICE 'Была ли как минимум одна итерация? %', FOUND; -- f
+END;
+$$;
+
+-- Удалить из таблицы все строки, выведя их 
+-- Откатить транзакцию
+BEGIN;
+DELETE FROM t RETURNING *;
+ROLLBACK;
+```
+
+## Обновление или удаление текущей строки
+
+```sql
+DO $$
+DECLARE
+	cur refcursor;
+	rec record;
+BEGIN
+	OPEN cur FOR SELECT * FROM t FOR UPDATE;
+	LOOP
+		FETCH cur INTO rec;
+		EXIT WHEN NOT FOUND;
+		UPDATE t SET code = code || ' (обработано)' WHERE CURRENT OF cur; -- построчное обновление
+	END LOOP;
+	CLOSE cur;
+END;
+$$;
+```
+
+## Открытие курсора и передача его клиенту
+
+```sql
+DO $$
+DECLARE
+	cur refcursor;
+	-- cur refcursor := 'cursor12345'; -- задать уникальное имя курсора (портала) на сервере
+BEGIN
+	OPEN cur FOR SELECT * FROM t;
+	RAISE NOTICE '%', cur; -- ЗАМЕЧАНИЕ: <unnamed portal 10> - имя курсора (портала), который был открыт на сервере
+END;
+$$;
+
+-- функция для создания и возврата курсора
+CREATE FUNCTION t_cur() RETURNS refcursor AS $$
+DECLARE
+	cur refcursor;
+BEGIN
+	OPEN cur FOR SELECT * FROM t;
+	RETURN cur;
+END;
+$$ VOLATILE LANGUAGE plpgsql;
+
+BEGIN;
+SELECT t_cur() AS curname \gset -- в переменную curname поместить значение курсора
+\echo :curname
+FETCH :"curname"; -- кавычки нужны из-за угловых скобок в имени
+COMMIT; -- закрытие курсора в конце транзакции
+
+
+-- Клиент сам может установить имя курсора
+CREATE FUNCTION t_cur_sam(cur refcursor) RETURNS void AS $$
+BEGIN
+	OPEN cur FOR SELECT * FROM t;
+END;
+$$ VOLATILE LANGUAGE plpgsql;
+
+BEGIN;
+SELECT t_cur_sam('cur123321');
+FETCH cur123321;
+COMMIT;
+
+```
 
