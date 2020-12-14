@@ -124,10 +124,6 @@ EXPLAIN SELECT users.* FROM users LEFT JOIN groups WHERE groups.name = 'admins';
 
 [Инструкция на английском](https://www.cybertec-postgresql.com/en/psql_editor-fighting-with-sublime-text-under-windows/)
 
-
-
-
-
 Sublime Text включает инструмент командной строки subl для работы с файлами в командной строке.
 
 psqlзапускает редактор, а затем ожидает завершения процесса редактирования. Но sublэто всего лишь специальный инструмент, который на самом деле запускается, sublime.exe,а потом просто умирает. Так что psql получает сигнал о subl завершении и возврате, но временный файл еще даже не редактировался.
@@ -142,10 +138,12 @@ psqlзапускает редактор, а затем ожидает завер
 ```cmd
 ECHO @ECHO OFF > %USERPROFILE%\subl.bat
 ECHO "C:\App\SublimeText3\subl.exe" --wait %* >> %USERPROFILE%\subl.bat
+
 type %USERPROFILE%\subl.bat
+-- проверить файл
 
 SET PSQL_EDITOR=%USERPROFILE%\subl.bat
--- из под psql: \setenv PSQL_EDITOR "%USERPROFILE%\subl.bat" 
+-- или из под psql: \setenv PSQL_EDITOR "%USERPROFILE%\subl.bat" 
 
 psql -U postgres
 \e
