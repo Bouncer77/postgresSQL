@@ -1,0 +1,119 @@
+--
+--	system-wide psql configuration file
+--
+--  This file is read before the .psqlrc file in the user's home directory.
+--
+--  Copy this to your installation's sysconf directory and rename it psqlrc.
+--  The sysconf directory can be identified via "pg_config --sysconfdir".
+
+-- Настройка psqlrc
+-- https://www.8host.com/blog/nastrojka-komandnoj-stroki-postgresql-c-pomoshhyu-psqlrc-v-ubuntu-14-04/
+
+-- не выводить информацию от \set QUIET 1 до \set QUIET 0
+\set QUIET 1
+
+-- PROMPT1 - главную строка
+--\set PROMPT1 '%M:%> %n@%/%R%#%x '
+
+\set PROMPT1 '%[%033[1;32m%]%M%[%033[0m%]:%[%033[1;31m%]%>%[%033[36m%] %n%[%033[31m%]@%[%033[35m%]%/%[%033[0m%]%R%[%033[31m%]%#%[%033[0m%]%x '
+
+-- %M задает имя хоста сервера БД (при соединении через сокет домена Unix это local);
+-- %> задает прослушивающий порт;
+-- %n указывает имя пользователя сессии;
+-- %/ относится к текущей базе данных;
+-- %R задает режимы (однострочный, или single-line — ^; отключен, или disconnected — !, как правило используется символ =);
+-- '=' - главная строка, '-' - вторичная строка (незавершенный запрос)
+-- %# задает пользователя (суперпользователь — #, обычный пользователь –>);
+-- %x относится к статусу транзакции – (как правило, не заполняется).
+--
+-- localhost:5432 postgres@db_insurance_ref=#
+-- [host1]:5432 user1@data1=> select * from
+
+-- PROMPT2 - Вторичная строка используется, если в системе остался незавершенный запрос
+-- \set PROMPT2 '%M %n@%/%R %# '
+-- [host1] user1@data1-> peel limit 1;
+
+-- Цвета командной строки
+-- %[%033[1;0m%] - сбросить цвет
+-- %[%033[1;31m%] - красный
+-- Выделить порт красным цветом:
+-- \set PROMPT1 '%M:%[%033[1;31m%]%>%[%033[0m%] %n@%/%R%#%x '
+-- Красный - 31
+-- Зеленый – 32;
+-- Желтый – 33;
+-- Синий – 34;
+-- Пурпурный – 35;
+-- Голубой – 36;
+-- Белый – 37.
+
+-- функцию дополнения ключевых слов SQL
+-- в верхнем (upper) или нижнем (lower) регистре
+\set COMP_KEYWORD_CASE upper
+
+--  команда на стороне клиента, реализованная в psql . Он сообщает время 
+--  с момента отправки запроса psql до момента получения ответа
+\timing
+
+-- реключиться на расширенный формат
+\x auto
+
+-- размер истории (то есть количество выполненных команд, которое нужно
+-- сохранять)
+\set HISTSIZE 2000
+
+-- При помощи опций default, verbose и terse можно задать подробность 
+-- вывода (verbosity) для отчетов об ошибках.
+-- \set VERBOSITY verbose
+
+-- При запросе нулевых значений базы данных PostgreSQL возвращается 
+-- пустой результат.
+-- Чтобы вместо этого возвращалось значение NULL, можно отредактировать 
+-- опцию null.
+-- \pset null '[null]'
+
+-- Кодировка
+\! chcp 1251
+
+-- Выводить операторы и результаты выполнения при запуске из внешнего 
+-- файла - командами \i или \ir  (относительный путь)  = \set ECHO all
+-- по умолчанию ECHO = none
+-- \set ECHO all
+
+
+-- Подключение к проекту
+\c  db_insurance_ref
+-- \set search_path ref_insurance_api -- работает некорректно
+set search_path = ref_insurance_api;
+
+-- Настройки проекта
+\set ref_db_name db_insurance_ref
+\set api_schema_owner ref_owner_insurance_api
+\set api_schema_name "ref_insurance_api"
+\set api_schema_name_quoted 'ref_insurance_api'
+\set ref_db_data_tbs ref_insurance_data_tbs
+\set ref_db_index_tbs ref_insurance_index_tbs
+
+\set QUIET 0
+
+-- Вывод в команде echo
+-- https://mb4.ru/programming/bash/1253-format-output-echo.html
+-- включенной опции -e команды echo в Bash включается режим 
+-- форматирования в виде набора специальных символов
+   -- текст разными цветами | цветом фона под текстом
+     -- \033[30m - чёрный     - \033[40m
+     -- \033[31m - красный    - \033[41m
+     -- \033[32m - зелёный    - \033[42m
+     -- \033[33m - желтый     - \033[43m
+     -- \033[34m - синий      - \033[44m
+     -- \033[35m - фиолетовый - \033[45m
+     -- \033[36m - голубой    - \033[46m
+     -- \033[37m - серый      - \033[47m
+     -- \033[0m  - сбросить все до значений по умолчанию
+
+\echo '\033[32mWelcome to PostgreSQL!\033[0m'
+
+-- сокращенные команды
+--\set extensions 'select * from pg_available_extensions;'
+--\echo :extensions
+
+\conninfo
