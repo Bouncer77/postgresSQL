@@ -15,29 +15,29 @@
 
 > Сменить кодировку удобно для того чтобы потом 
 
-![change_encoding](.\images\DBeaver\Change_encoding.jpg)
+![change_encoding](./images/DBeaver/Change_encoding.jpg)
 
 ## Ошибкас биндингом параметра `?`
 
 > Можно изменить значение анонимного параметра с '?', например, на '#'
 
-![Anonymous_parameter_mark](.\images\DBeaver\Anonymous_parameter_mark.jpg)
+![Anonymous_parameter_mark](./images/DBeaver/Anonymous_parameter_mark.jpg)
 
 ## Включить вставку в UPPER CASE 
 
-![Upper_case_1_from_2](.\images\DBeaver\Upper_case_1_from_2.jpg)
+![Upper_case_1_from_2](./images/DBeaver/Upper_case_1_from_2.jpg)
 
-![Upper_case_2_from_2](.\images\DBeaver\Upper_case_2_from_2.jpg)
+![Upper_case_2_from_2](./images/DBeaver/Upper_case_2_from_2.jpg)
 
 
 ## Вместо TAB - 4 Пробела
 
-![Tab_to_4_spaces](.\images\DBeaver\Tab_to_4_spaces.jpg)
+![Tab_to_4_spaces](./images/DBeaver/Tab_to_4_spaces.jpg)
 
 ## Выполнение запросов при начальной установки соединения (Установить переменные при запуске DBeaver)
 
-![Bootstrap_queries](.\images\DBeaver\Bootstrap_queries.jpg)
+![Bootstrap_queries](./images/DBeaver/Bootstrap_queries.jpg)
 
 ## Поддержка pl/pg SQL скриптов
 
-![Plpgsql_scripts](.\images\DBeaver\Plpgsql_scripts.jpg)
+![Plpgsql_scripts](./images/DBeaver/Plpgsql_scripts.jpg)

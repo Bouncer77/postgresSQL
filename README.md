@@ -1,5 +1,7 @@
 
 [psql](./psql.md)
+[Настройки DBeaver](./DBeaver_Config.md)
+[Триггеры и триггерные функции на pl/pg Sql](./triggers.md)
 
 <!-- MarkdownTOC autolink="true" -->
 
