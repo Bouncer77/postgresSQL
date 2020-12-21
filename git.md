@@ -15,6 +15,19 @@ Options -> Window -> Rows присвоить 32, вместо 24, который
 
 $`git config --list --show-origin`
 
+## Генерация ssh ключей 
+
+```bash
+# ключ SSH с шифрованием RSA и 4096
+ssh-keygen -t rsa -b 4096 -C "ваша@почта.com"
+
+eval `ssh-agent -s`
+
+`ssh-add ~/.ssh/id_rsa`
+
+cat ~/.ssh/id_rsa.pub
+```
+
 ## ssh агент
 
 Запуск в фоновом режиме  
@@ -24,3 +37,4 @@ $`git config --list --show-origin`
 `ssh-add ~/.ssh/id_rsa`
 
 [Подробнее об ssh-agent](https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/#.X-DHNNgzY2w)
+[Менее подробно, но на русском](https://only-to-top.ru/blog/tools/2019-12-08-git-ssh-windows.html)

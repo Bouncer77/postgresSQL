@@ -36,7 +36,8 @@
 
 ## Выполнение запросов при начальной установки соединения (Установить переменные при запуске DBeaver)
 
-![Bootstrap_queries](./images/DBeaver/Bootstrap_queries.jpg)
+![Bootstrap_queries_1_from_2](./images/DBeaver/Bootstrap_queries_1_from_2.jpg)
+![Bootstrap_queries_2_from_2](./images/DBeaver/Bootstrap_queries_2_from_2.jpg)
 
 ## Поддержка pl/pg SQL скриптов
 
