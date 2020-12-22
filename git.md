@@ -38,3 +38,15 @@ cat ~/.ssh/id_rsa.pub
 
 [Подробнее об ssh-agent](https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/#.X-DHNNgzY2w)
 [Менее подробно, но на русском](https://only-to-top.ru/blog/tools/2019-12-08-git-ssh-windows.html)
+
+## Сценариb взаимодействия
+
+### Стандартный
+
+```bash
+git add . # Добавить все неотслеживаемые файлы под контроль гита
+git commit -m "comment" # Закоммитить изменения
+git push # Загрузить все коммиты в удаленный репозиторий
+```
+
+
