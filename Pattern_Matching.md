@@ -11,7 +11,12 @@
 	- substring with three arguments
 	- substring with two arguments
 - regexp_replace
+	- Table flags
+- regexp_match and regexp_matches
+	- regexp_match \(Postgres Pro\)
+	- regexp_matches
 - POSIX Regular Expressions
+- НСИ
 
 <!-- /MarkdownTOC -->
 
@@ -121,6 +126,7 @@ substring(строка, шаблон)
 SELECT substring('foobar' from '%#"o_b#"%' for '#'); -- oob
 SELECT substring('foobar' from '#"o_b#"%' for '#'); -- NULL
 
+-- НСИ
 SELECT substring('$.extFields[*].id', '%extFields%.#"%#"', '#'); -- id
 ```
 
@@ -136,13 +142,119 @@ SELECT substring('testPrivet', 'te(.*)vet'); -- stPri
 
 Функция regexp_replace подставляет другой текст вместо подстрок, соответствующих шаблонам регулярных выражений POSIX.
 
+Если соответствие `шаблону` в `исходной_строке` находится, возвращается `исходная_строка`, в которой вместо соответствующего фрагмента подставляется `замена`.
+
+Если же `исходная_строка` не содержит фрагмента, подходящего под `шаблон`, она возвращается неизменной
+
 ```sql
 regexp_replace(исходная_строка, шаблон, замена [, флаги]);
 ```
 
+```sql
+SELECT regexp_replace('foobarbaz', 'b..', 'X'); -- fooXbaz
+SELECT regexp_replace('foobarbaz', 'b..', 'X', 'g'); -- fooXX
+SELECT regexp_replace('foobarbaz', 'b(..)', 'X\1Y', 'g'); -- fooXarYXazY
+
+-- НСИ
+SELECT regexp_replace('$.extFields[*].id', '\*', '5'); -- $.extFields[5].id
+```
+
+Строка замена может содержать \n, где n — число от 1 до 9, указывающее на исходный фрагмент, соответствующий n-ому подвыражению в скобках, и может содержать обозначение \&, указывающее, что будет вставлен фрагмент, соответствующий всему шаблону. Если же в текст замены нужно включить обратную косую черту буквально, следует написать \\.
+
+### Table flags
+
+Параметр	| Описание
+------------|----------------------------------
+g   | указывает, что заменяться должны все подходящие подстроки, а не только первая из них
+b	| продолжение регулярного выражения — BRE
+c	| поиск соответствий с учётом регистра (переопределяет тип оператора)
+e	| продолжение RE — ERE
+i	| поиск соответствий без учёта регистра (см. Подраздел 9.7.3.5) (переопределяет тип оператора)
+m	| исторически сложившийся синоним n
+n	| поиск соответствий с учётом перевода строк (см. Подраздел 9.7.3.5)
+p	| переводы строк учитываются частично (см. Подраздел 9.7.3.5)
+q	| продолжение регулярного выражения — обычная строка («в кавычках»), содержимое которой воспринимается буквально
+s	| поиск соответствий без учёта перевода строк (по умолчанию)
+t	| компактный синтаксис (по умолчанию; см. ниже)
+w	| переводы строк учитываются частично, но в другом, «странном» режиме (см. Подраздел 9.7.3.5)
+x	| развёрнутый синтаксис (см. ниже)
+
+## regexp_match and regexp_matches 
+
+### regexp_match (Postgres Pro)
+
+regexp_match() существует только в Postgres Pro версии 10 и выше
+
+Возвращает текстовый массив из всех подходящих подстрок, полученных из первого вхождения шаблона регулярного выражения POSIX в строке.
+
+Если вхождение не находится, результатом будет NULL.
+
+Если вхождение находится и шаблон не содержит подвыражений в скобках, результатом будет текстовый массив с одним элементом, содержащим подстроку, соответствующую всему шаблону.
+
+Если вхождение находится и шаблон содержит подвыражения в скобках, результатом будет текстовый массив, в котором n-ым элементом будет n-ое заключённое в скобки подвыражение шаблона (не считая «незахватывающих» скобок; подробнее см. ниже). 
+
+В параметре флаги передаётся необязательная текстовая строка, содержащая ноль или более однобуквенных флагов, меняющих поведение функции (кроме флага g).
+
+```sql
+text[] regexp_match(строка text, шаблон text [, флаги text]);
+```
+```sql
+SELECT regexp_match('foobarbequebaz', 'bar.*que'); -- {barbeque}
+SELECT regexp_match('foobarbequebaz', '(bar)(beque)'); -- {bar,beque}
+SELECT (regexp_match('foobarbequebaz', 'bar.*que'))[1]; -- barbeque
+SELECT (regexp_match('foobarbequebaz', 'ЧТО-ТО'))[1]; -- NULL
+SELECT (regexp_match('foobarbequebaz', '(bar)(que)'))[1:2]; -- barbeque
+
+SELECT regexp_match('foobarbequebaz', '(bar).*(baz)'); -- {bar,baz}
+SELECT (regexp_match('foobarbequebaz', '(foo)(bar).*(baz)'))[2:3]; -- {bar,baz}
+
+-- НСИ
+  -- вывести все имена ключей
+SELECT regexp_match('$.extFields[*].id', '\.(.*)\['); -- {extFields}
+SELECT (regexp_match('$.extFields[*].id', '\.(.*)[\[|$]]'))[1]; -- extFields
+
+SELECT regexp_match('$.extFields[*].id', '\.(.*)'); -- {extFields[*].id}
+
+SELECT regexp_match('$.extFields[*].idgg.pip', '([a-zA-Z]+).*\.([a-zA-Z]+)'); -- {extFields,pip} 
+SELECT regexp_match('$.extFields[*].id.pip', '([a-zA-Z]+)\.([a-zA-Z]+)'); -- {id,pip}
+```
+### regexp_matches
+
+Функция regexp_matches возвращает набор текстовых массивов со всеми подходящими подстроками, полученными в результате применения регулярного выражения POSIX к строке. 
+
+флаг g, указывающий ей выдать все вхождения, а не только первое
+
+```sql
+SELECT regexp_matches('foo', 'not there');
+-- (0 rows)
+SELECT regexp_matches('foobarbequebazilbarfbonk', '(b[^b]+)(b[^b]+)', 'g');
+/*   {bar,beque}
+	 {bazil,barf}	 */
+SELECT col1, (SELECT regexp_matches(col2, '(bar)(beque)')) FROM tab;
+
+-- НСИ
+  -- Получить все ключи
+SELECT regexp_matches('$.extFields[*].pip.info[*].id', '\.([a-zA-Z]+)', 'g');
+/*
+ {extFields}
+ {pip}
+ {info}
+ {id}
+*/
+  -- Получить все массивы
+SELECT regexp_matches('$.extFields[*].pip.info[*].id', '\.([a-zA-Z]+)\[', 'g');
+/*
+{extFields}
+{info}
+*/
+```
 
 
 ## POSIX Regular Expressions
+
+[Подробнее о POSIX](https://losst.ru/chto-takoe-posix#comment-42106)
+
+	POSIX — набор стандартов, описывающих интерфейсы между операционной системой и прикладной программой, библиотеку языка C и набор приложений и их интерфейсов 
 
 В отличие от шаблонов LIKE, регулярное выражение может совпадать с любой частью строки, если только оно не привязано явно к началу и/или концу строки.
 
@@ -176,4 +288,57 @@ SELECT 'abc' ~ '(b|d)'; -- true
 'abc' ~ '^a'     true
 'abc' ~ '(b|d)'  true
 'abc' ~ '^(b|c)' false
+```
+
+
+## НСИ
+
+```sql
+DO $$
+DECLARE
+l_one numeric := 1;
+l_two numeric := 2;
+
+--l_cur cursor;
+l_rec record;
+l_res text;
+BEGIN
+	--RAISE NOTICE 'hi l_one = %, l_two = %', l_one, l_two;
+
+	--OPEN l_cur FOR 
+		--SELECT regexp_matches('$.extFields[*].pip.info[*].id', '\.([a-zA-Z]+)\[', 'g');
+
+	FOR l_rec IN (SELECT regexp_matches('$.extFields[*].pip.info[*].id', '\.([a-zA-Z]+)\[', 'g')) LOOP 
+		RAISE NOTICE 'l_rec = %', l_rec;
+		/*
+		({extFields})
+		({info})
+		*/
+	END LOOP;
+
+	--SELECT regexp_matches('$.extFields[*].pip.info[*].id', '\.([a-zA-Z]+)\[', 'g') INTO l_rec;
+	--RAISE NOTICE 'hi l_rec = %', l_rec; -- ({extFields})
+
+	--SELECT regexp_replace('$.extFields[*].id', '\*', '5') INTO l_res; -- $.extFields[5].id
+	--RAISE NOTICE 'l_res = %', l_res; --  $.extFields[5].id
+
+END;
+$$;
+
+DO $$
+DECLARE
+v_json_path_1 text := '$[*].id';
+v_json_path_2 text := '$[*].value';
+v_json jsonb := '[{"id":100,"value":"LC"},{"id":101,"value":"Аккредитив"}]'::jsonb;
+l_one numeric := 1;
+l_two numeric := 2;
+
+l_res text;
+BEGIN
+	SELECT regexp_replace(v_json_path_1::text, '\*'::text, l_one::text) INTO l_res; 
+	RAISE NOTICE 'l_res = %', l_res; --  $[1].id
+END;
+$$;
+
+```
 ```
